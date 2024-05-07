@@ -1,0 +1,26 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    background-color: blue;
+    padding: 10px 15px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+header a{
+    color: black;
+    font-weight: 600;
+}
+
+footer{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+    background-color: blue;
+    padding: 10px 15px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+footer p{
+    margin-right: 3px;
+}
