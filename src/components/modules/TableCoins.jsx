@@ -1,10 +1,11 @@
-import React from 'react';
+import { MdEuroSymbol } from "react-icons/md";
+import { PiCurrencyJpy } from "react-icons/pi";
 
 import styles from"./TableCoins.module.css";
 import chartUp from"../../assets/chart-up.svg";
 import chartDown from "../../assets/chart-down.svg";
 
-function TableCoins({coins}) {
+function TableCoins({coins ,currency}) {
   return (
     <div className={styles.container}>
       <table className={styles.table}>
@@ -20,7 +21,7 @@ function TableCoins({coins}) {
         </thead>
         <tbody>
           {coins.map((coin)=>(
-         <TableRow coin={coin} key={coin.id}/>
+         <TableRow coin={coin} key={coin.id} currency={currency}/>
           ))}
 
 
@@ -30,8 +31,21 @@ function TableCoins({coins}) {
   )
 }
 
-export default TableCoins
-function TableRow({coin}){
+export default TableCoins;
+
+const setSymbolCurrency = (currency)=>{
+if(currency === "usd"){
+  return "$";
+}  else if( currency === "eur"){
+  return <MdEuroSymbol />;
+}
+else{
+  return <PiCurrencyJpy />;
+}
+  
+}
+
+function TableRow({coin , currency}){
   const {id , symbol,image,name,current_price ,price_change_percentage_24h:price_change , total_volume} = coin
   return(  
     <tr key={id}>
@@ -43,10 +57,10 @@ function TableRow({coin}){
          
           </td>
           <td>{name}</td>
-          <td>${current_price.toLocaleString()}</td>
+          <td><span>{setSymbolCurrency(currency)}</span>{current_price.toLocaleString()}</td>
          <td className={price_change>0 ? styles.success : styles.error}>%{price_change.toLocaleString()}</td>
          <td>{total_volume.toLocaleString()}</td>
-         <td><img src={chartUp} /></td>
+         <td><img src={price_change > 0 ? chartUp : chartDown} /></td>
      </tr>)
 
 
