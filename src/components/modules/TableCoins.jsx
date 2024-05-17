@@ -1,14 +1,18 @@
 import { MdEuroSymbol } from "react-icons/md";
 import { PiCurrencyJpy } from "react-icons/pi";
+import { RotatingLines } from 'react-loader-spinner';
 
 import styles from"./TableCoins.module.css";
 import chartUp from"../../assets/chart-up.svg";
 import chartDown from "../../assets/chart-down.svg";
 
-function TableCoins({coins ,currency}) {
+function TableCoins({coins ,currency,isLoading}) {
+  
   return (
     <div className={styles.container}>
-      <table className={styles.table}>
+      {
+      isLoading ? <RotatingLines className={styles.loader}  strokeColor="blue" strokeWidth="2"/> : (
+        <table className={styles.table}>
         <thead>
             <tr>
                 <th>Coin</th>
@@ -27,6 +31,9 @@ function TableCoins({coins ,currency}) {
 
         </tbody>
       </table>
+      )
+    }
+      
     </div>
   )
 }
