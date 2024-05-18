@@ -5,4 +5,6 @@ function getCoinList(currency,page){
     return `${BASE_URL}/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=20&page=${page}&sparkline=false&locale=en&x_cg_demo_api_key=${API_KEY}`
 };
 const searchCoins = (query) => `https://api.coingecko.com/api/v3/search?query=${query}&x_cg_demo_api_key=${API_KEY}`;
-export {getCoinList,searchCoins};
+
+const marketChart = (coin)=>`${BASE_URL}/coins/${coin}/market_chart?vs_currency=usd&days=7`
+export {getCoinList,searchCoins, marketChart};
