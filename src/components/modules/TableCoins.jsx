@@ -53,14 +53,14 @@ else{
   
 }
 
-function TableRow({coin , currency,setChart}){
+function TableRow({coin , currency, setChart}){
   const {id , symbol,image,name,current_price ,price_change_percentage_24h:price_change , total_volume} = coin
  const showHandler = async()=>{
 try {
   const res = await fetch(marketChart(id));
   const json = await res.json();
   setChart({... json , coin});
-console.log(json);
+
 
 } catch (error) {
   setChart(null)
